@@ -1,0 +1,223 @@
+---
+openapi: 3.1.0
+info:
+  title: NTT User CRUD
+  description: |-
+    Esta API RESTFUL expone la de creación de usuarios, entiéndase por esto, la
+    implementación de los verbos GET, POST, PUT, PATCH Y DELETE
+  contact:
+    email: cristianquezadacerda@gmail.com
+  version: 0.0.1
+  summary: USER CRUD
+  x-namespace: swagger
+servers:
+- url: "http://localhost:8080/api"
+tags:
+- name: user
+  description: Usuarios
+- name: user_auth
+  description: Autenticacion
+paths:
+  "/user":
+    get:
+      tags:
+      - user
+      summary: Lista los usarios del sistema
+      description: Lista los usarios del sistema
+      operationId: listUsers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/User"
+                description: A Pet in JSON Format
+        '404':
+          description: No se encuentran usuarios
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+                description: Mennsaje de error
+        default:
+          description: Unexpected error
+      security:
+      - usercrud_auth: []
+    post:
+      tags:
+      - user
+      summary: Crea un nuevo usuario
+      description: Crea un nuevo usuario
+      operationId: addUser
+      requestBody:
+        description: Crea un nuevo usuario
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/User"
+              description: Un usuario en formato JSON
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/User"
+                description: Un usuario en formato JSON
+        '405':
+          description: Invalid input
+        default:
+          description: Unexpected error
+  "/user/{userId}":
+    get:
+      tags:
+      - user
+      summary: Obtiene un usuario por su id
+      description: Retorna. el usuario correspondiente al id
+      operationId: getUserById
+      parameters:
+      - name: userId
+        in: path
+        description: Id del usuario a obtener
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Id del usuario a obtener
+      responses:
+        '200':
+          description: El usuario
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/User"
+                description: Usuario en formato JSON
+        '404':
+          description: Usuario no Encontrado
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+                description: Mennsaje de error
+        default:
+          description: Unexpected error
+      security:
+      - usercrud_auth: []
+    put:
+      tags:
+      - user
+      summary: Actualiza un usuario existente
+      description: Actualiza un usuario existente
+      operationId: updateUser
+      parameters:
+      - name: userId
+        in: path
+        description: Id del usuario a obtener
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Id del usuario a obtener
+      requestBody:
+        description: Actualiza un usuario existente
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/User"
+              description: Un usuario en formato JSON
+        required: true
+      responses:
+        '201':
+          description: Successful operation
+        '405':
+          description: Invalid input
+        default:
+          description: Unexpected error
+      security:
+      - usercrud_auth: []
+    delete:
+      tags:
+      - user
+      summary: Borra un usuario existente
+      description: Borra un usuario existente
+      operationId: deleteUser
+      parameters:
+      - name: userId
+        in: path
+        description: Id del usuario a obtener
+        required: true
+        schema:
+          type: string
+          format: uuid
+          description: Id del usuario a obtener
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Usuario no Encontrado
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+                description: Mennsaje de error
+        '405':
+          description: Invalid input
+        default:
+          description: Unexpected error
+      security:
+      - usercrud_auth: []
+components:
+  schemas:
+    User:
+      type: object
+      description: Usuario
+      properties:
+        id:
+          type: string
+          description: Id del usuario
+          format: uuid
+        nombre:
+          type: string
+        correo:
+          type: string
+          format: email
+        password:
+          type: string
+          format: password
+        telefonos:
+          type: array
+          items:
+            type: object
+            properties:
+              numero:
+                type: string
+              codigoCiudad:
+                type: string
+              codigoPais:
+                type: string
+        creado:
+          type: string
+          format: date-time
+        modificado:
+          type: string
+          format: date-time
+        ultimoLogin:
+          type: string
+          format: date-time
+        token:
+          type: string
+        activo:
+          type: string
+    Error:
+      type: object
+      description: mensaje de error
+      properties:
+        mensaje:
+          type: string
+  securitySchemes:
+    usercrud_auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
