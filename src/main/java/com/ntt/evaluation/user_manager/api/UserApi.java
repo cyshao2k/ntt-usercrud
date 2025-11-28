@@ -30,7 +30,7 @@ import java.util.List;
 import java.util.Map;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-26T23:12:16.846028-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-27T17:18:50.367913-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
 @Validated
 @Tag(name = "user", description = "Usuarios")
 public interface UserApi {
@@ -45,7 +45,7 @@ public interface UserApi {
      *
      * @param user Crea un nuevo usuario (required)
      * @return Successful operation (status code 200)
-     *         or Invalid input (status code 405)
+     *         or Invalid input (status code 400)
      *         or Unexpected error (status code 200)
      */
     @Operation(
@@ -57,7 +57,9 @@ public interface UserApi {
             @ApiResponse(responseCode = "200", description = "Successful operation", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
             }),
-            @ApiResponse(responseCode = "405", description = "Invalid input"),
+            @ApiResponse(responseCode = "400", description = "Invalid input", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
             @ApiResponse(responseCode = "default", description = "Unexpected error")
         }
     )
@@ -170,7 +172,7 @@ public interface UserApi {
         tags = { "user" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Successful operation", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = User.class))
+                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = User.class)))
             }),
             @ApiResponse(responseCode = "404", description = "No se encuentran usuarios", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
@@ -187,7 +189,7 @@ public interface UserApi {
         produces = { "application/json" }
     )
     
-    default ResponseEntity<User> listUsers(
+    default ResponseEntity<List<User>> listUsers(
         
     ) {
         return getDelegate().listUsers();
@@ -201,7 +203,7 @@ public interface UserApi {
      * @param userId Id del usuario a obtener (required)
      * @param user Actualiza un usuario existente (required)
      * @return Successful operation (status code 201)
-     *         or Invalid input (status code 405)
+     *         or Invalid input (status code 400)
      *         or Unexpected error (status code 200)
      */
     @Operation(
@@ -211,7 +213,9 @@ public interface UserApi {
         tags = { "user" },
         responses = {
             @ApiResponse(responseCode = "201", description = "Successful operation"),
-            @ApiResponse(responseCode = "405", description = "Invalid input"),
+            @ApiResponse(responseCode = "400", description = "Invalid input", content = {
+                @Content(mediaType = "application/json", schema = @Schema(implementation = Error.class))
+            }),
             @ApiResponse(responseCode = "default", description = "Unexpected error")
         },
         security = {
@@ -221,6 +225,7 @@ public interface UserApi {
     @RequestMapping(
         method = RequestMethod.PUT,
         value = "/user/{userId}",
+        produces = { "application/json" },
         consumes = { "application/json" }
     )
     

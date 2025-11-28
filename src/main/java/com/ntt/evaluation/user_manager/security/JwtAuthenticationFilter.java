@@ -80,7 +80,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        System.out.println("Paaso por aca");
         // Continuar con la cadena de filtros
         filterChain.doFilter(request, response);
     }

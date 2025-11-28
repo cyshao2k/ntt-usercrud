@@ -78,12 +78,6 @@ public class JwtTokenUtil {
     /** Valida si el token es válido y no ha expirado. */
     public boolean validateToken(String token, UserDetails userDetails) {
 
-        System.out.println("Secret["+secret+"]");
-
-        System.out.println("*********");
-        System.out.println("Token["+token+"]");
-        System.out.println("*********");
-
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }

@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "User", description = "Usuario")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-26T23:12:16.846028-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-27T17:18:50.367913-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
 public class User {
 
   private UUID id;
@@ -51,7 +51,7 @@ public class User {
 
   private String token;
 
-  private String activo;
+  private Boolean activo;
 
   public User id(UUID id) {
     this.id = id;
@@ -102,7 +102,7 @@ public class User {
    * Get correo
    * @return correo
    */
-  @jakarta.validation.constraints.Email 
+  @Pattern(regexp = "#{ '${validation.pattern.email}' }") @jakarta.validation.constraints.Email 
   @Schema(name = "correo", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("correo")
   public String getCorreo() {
@@ -241,7 +241,7 @@ public class User {
     this.token = token;
   }
 
-  public User activo(String activo) {
+  public User activo(Boolean activo) {
     this.activo = activo;
     return this;
   }
@@ -253,11 +253,11 @@ public class User {
   
   @Schema(name = "activo", requiredMode = Schema.RequiredMode.NOT_REQUIRED)
   @JsonProperty("activo")
-  public String getActivo() {
+  public Boolean getActivo() {
     return activo;
   }
 
-  public void setActivo(String activo) {
+  public void setActivo(Boolean activo) {
     this.activo = activo;
   }
 

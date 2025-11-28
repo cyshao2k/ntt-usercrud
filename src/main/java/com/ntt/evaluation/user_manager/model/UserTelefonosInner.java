@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("User_telefonos_inner")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-26T23:12:16.846028-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-27T17:18:50.367913-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
 public class UserTelefonosInner {
 
   private String numero;

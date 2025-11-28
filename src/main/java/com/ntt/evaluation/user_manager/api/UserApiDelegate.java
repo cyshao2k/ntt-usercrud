@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * A delegate to be called by the {@link UserApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-26T23:12:16.846028-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-11-27T17:18:50.367913-03:00[America/Santiago]", comments = "Generator version: 7.8.0")
 public interface UserApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -33,7 +33,7 @@ public interface UserApiDelegate {
      *
      * @param user Crea un nuevo usuario (required)
      * @return Successful operation (status code 200)
-     *         or Invalid input (status code 405)
+     *         or Invalid input (status code 400)
      *         or Unexpected error (status code 200)
      * @see UserApi#addUser
      */
@@ -41,7 +41,12 @@ public interface UserApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : \"activo\" }";
+                    String exampleString = "{ \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : true }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"mensaje\" : \"mensaje\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -90,7 +95,7 @@ public interface UserApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : \"activo\" }";
+                    String exampleString = "{ \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : true }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -114,11 +119,11 @@ public interface UserApiDelegate {
      *         or Unexpected error (status code 200)
      * @see UserApi#listUsers
      */
-    default ResponseEntity<User> listUsers() {
+    default ResponseEntity<List<User>> listUsers() {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : \"activo\" }";
+                    String exampleString = "[ { \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : true }, { \"password\" : \"password\", \"creado\" : \"2000-01-23T04:56:07.000+00:00\", \"correo\" : \"correo\", \"ultimoLogin\" : \"2000-01-23T04:56:07.000+00:00\", \"modificado\" : \"2000-01-23T04:56:07.000+00:00\", \"id\" : \"046b6c7f-0b8a-43b9-b35d-6489e6daee91\", \"telefonos\" : [ { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" }, { \"numero\" : \"numero\", \"codigoCiudad\" : \"codigoCiudad\", \"codigoPais\" : \"codigoPais\" } ], \"nombre\" : \"nombre\", \"token\" : \"token\", \"activo\" : true } ]";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -140,12 +145,21 @@ public interface UserApiDelegate {
      * @param userId Id del usuario a obtener (required)
      * @param user Actualiza un usuario existente (required)
      * @return Successful operation (status code 201)
-     *         or Invalid input (status code 405)
+     *         or Invalid input (status code 400)
      *         or Unexpected error (status code 200)
      * @see UserApi#updateUser
      */
     default ResponseEntity<Void> updateUser(UUID userId,
         User user) {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"mensaje\" : \"mensaje\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
