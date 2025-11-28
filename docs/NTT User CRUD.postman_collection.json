@@ -1,0 +1,922 @@
+{
+	"info": {
+		"_postman_id": "5697f536-728e-4ddb-af74-c6199857a27d",
+		"name": "NTT User CRUD",
+		"description": "Esta API RESTFUL expone la de creación de usuarios, entiéndase por esto, la\nimplementación de los verbos GET, POST, PUT, PATCH Y DELETE\n\nContact Support:\n Email: cristianquezadacerda@gmail.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7474664",
+		"_collection_link": "https://www.postman.com/warped-desert-7777/workspace/18138742-5aed-47b8-95ed-e1ff6fb1e98e/collection/7474664-5697f536-728e-4ddb-af74-c6199857a27d?action=share&source=collection_link&creator=7474664"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "{userId}",
+					"item": [
+						{
+							"name": "Obtiene un usuario por su id",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}",
+											"description": "(Required) Id del usuario a obtener"
+										}
+									]
+								},
+								"description": "Retorna. el usuario correspondiente al id"
+							},
+							"response": [
+								{
+									"name": "El usuario",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"id\": \"urn:uuid:5489c39c-1589-62ef-7fa3-de944052ff6f\",\n  \"nombre\": \"string\",\n  \"correo\": \"4g0nN6DVyFmFxWU@rUowww.cqiv\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"strin\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1952-10-30T22:46:55.272Z\",\n  \"modificado\": \"1951-10-08T16:57:55.674Z\",\n  \"ultimoLogin\": \"2008-06-26T18:02:38.102Z\",\n  \"token\": \"string\",\n  \"activo\": true\n}"
+								},
+								{
+									"name": "Usuario no Encontrado",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"mensaje\": \"string\"\n}"
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Actualiza un usuario existente",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nombre\": \"Juan2\",\n  \"correo\": \"abc2@dominio.com\",\n  \"password\": \"123456\",\n  \"telefonos\": [\n    {\n      \"numero\": \"87654321\",\n      \"codigoCiudad\": \"2\",\n      \"codigoPais\": \"57\"\n    },\n    {\n      \"numero\": \"10293847\",\n      \"codigoCiudad\": \"2\",\n      \"codigoPais\": \"57\"\n    }\n  ],\n  \"token\": \"string\",\n  \"activo\": true\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}",
+											"description": "(Required) Id del usuario a obtener"
+										}
+									]
+								},
+								"description": "Actualiza un usuario existente"
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"urn:uuid:1ffb45bc-c212-e636-799f-fff7f6e5c6b4\",\n  \"nombre\": \"string\",\n  \"correo\": \"STlUJw5c4@ShlhFgZayNobaah.vo\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1980-09-18T03:39:24.368Z\",\n  \"modificado\": \"2024-11-28T12:51:48.766Z\",\n  \"ultimoLogin\": \"1976-04-03T10:32:57.260Z\",\n  \"token\": \"string\",\n  \"activo\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"urn:uuid:1ffb45bc-c212-e636-799f-fff7f6e5c6b4\",\n  \"nombre\": \"string\",\n  \"correo\": \"STlUJw5c4@ShlhFgZayNobaah.vo\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1980-09-18T03:39:24.368Z\",\n  \"modificado\": \"2024-11-28T12:51:48.766Z\",\n  \"ultimoLogin\": \"1976-04-03T10:32:57.260Z\",\n  \"token\": \"string\",\n  \"activo\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"id\": \"urn:uuid:1ffb45bc-c212-e636-799f-fff7f6e5c6b4\",\n  \"nombre\": \"string\",\n  \"correo\": \"STlUJw5c4@ShlhFgZayNobaah.vo\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1980-09-18T03:39:24.368Z\",\n  \"modificado\": \"2024-11-28T12:51:48.766Z\",\n  \"ultimoLogin\": \"1976-04-03T10:32:57.260Z\",\n  \"token\": \"string\",\n  \"activo\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Borra un usuario existente",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "{{userId}}",
+											"description": "(Required) Id del usuario a obtener"
+										}
+									]
+								},
+								"description": "Borra un usuario existente"
+							},
+							"response": [
+								{
+									"name": "Successful operation",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Usuario no Encontrado",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"mensaje\": \"string\"\n}"
+								},
+								{
+									"name": "Invalid input",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Method Not Allowed",
+									"code": 405,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Unexpected error",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer <token>",
+												"description": "Added as a part of security scheme: bearer"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/user/:userId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												":userId"
+											],
+											"variable": [
+												{
+													"key": "userId",
+													"value": "urn:uuid:1078f496-2409-7305-828b-3334f8248723",
+													"description": "(Required) Id del usuario a obtener"
+												}
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Lista los usarios del sistema",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Lista los usarios del sistema"
+					},
+					"response": [
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"id\": \"3ddade4d-b9b7-b4ad-bb29-b0d67844c890\",\n    \"nombre\": \"string\",\n    \"correo\": \"6GMrUb1@WAWAzabNbeTuxhSWAyShi.mio\",\n    \"password\": \"st\",\n    \"telefonos\": [\n      {\n        \"numero\": \"string\",\n        \"codigoCiudad\": \"string\",\n        \"codigoPais\": \"string\"\n      },\n      {\n        \"numero\": \"string\",\n        \"codigoCiudad\": \"string\",\n        \"codigoPais\": \"string\"\n      }\n    ],\n    \"creado\": \"1990-03-13T15:15:40.452Z\",\n    \"modificado\": \"2001-03-14T05:14:31.323Z\",\n    \"ultimoLogin\": \"1987-10-06T05:52:07.351Z\",\n    \"token\": \"string\",\n    \"activo\": true\n  },\n  {\n    \"id\": \"1828edd7-09f8-3c1f-c437-4431679cd0b7\",\n    \"nombre\": \"string\",\n    \"correo\": \"9Ki8bUky@RB.gqcp\",\n    \"password\": \"string\",\n    \"telefonos\": [\n      {\n        \"numero\": \"string\",\n        \"codigoCiudad\": \"string\",\n        \"codigoPais\": \"string\"\n      },\n      {\n        \"numero\": \"string\",\n        \"codigoCiudad\": \"string\",\n        \"codigoPais\": \"string\"\n      }\n    ],\n    \"creado\": \"1993-09-18T05:18:38.592Z\",\n    \"modificado\": \"2022-08-25T22:50:06.523Z\",\n    \"ultimoLogin\": \"1979-11-06T23:53:20.019Z\",\n    \"token\": \"string\",\n    \"activo\": true\n  }\n]"
+						},
+						{
+							"name": "No se encuentran usuarios",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"mensaje\": \"string\"\n}"
+						},
+						{
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer <token>",
+										"description": "Added as a part of security scheme: bearer"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Crea un nuevo usuario",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseData = pm.response.json();",
+									"const userId = responseData.id;",
+									"const token = responseData.token;",
+									"pm.collectionVariables.set(\"userId\", userId);",
+									"pm.collectionVariables.set(\"bearerToken\", token);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": null,\n  \"nombre\": \"Juan1\",\n  \"correo\": \"abc@dominio.com\",\n  \"password\": \"123456\",\n  \"telefonos\": [\n    {\n      \"numero\": \"12345678\",\n      \"codigoCiudad\": \"1\",\n      \"codigoPais\": \"56\"\n    },\n    {\n      \"numero\": \"12345678\",\n      \"codigoCiudad\": \"1\",\n      \"codigoPais\": \"56\"\n    }\n  ],\n  \"creado\": null,\n  \"modificado\": null,\n  \"ultimoLogin\": null,\n  \"token\": \"string\",\n  \"activo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Crea un nuevo usuario"
+					},
+					"response": [
+						{
+							"name": "Successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"urn:uuid:1ffb45bc-c212-e636-799f-fff7f6e5c6b4\",\n  \"nombre\": \"string\",\n  \"correo\": \"STlUJw5c4@ShlhFgZayNobaah.vo\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1980-09-18T03:39:24.368Z\",\n  \"modificado\": \"2024-11-28T12:51:48.766Z\",\n  \"ultimoLogin\": \"1976-04-03T10:32:57.260Z\",\n  \"token\": \"string\",\n  \"activo\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"id\": \"c7c3bf13-fff3-d314-ed4a-4dd790e05346\",\n  \"nombre\": \"string\",\n  \"correo\": \"p2SV2-YPy@NuqcgSeQDCgJcctLsVWgJEMpsBEwMe.isyw\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1972-09-14T20:21:45.477Z\",\n  \"modificado\": \"1979-09-29T17:58:34.914Z\",\n  \"ultimoLogin\": \"1978-11-29T16:40:30.233Z\",\n  \"token\": \"string\",\n  \"activo\": true\n}"
+						},
+						{
+							"name": "Invalid input",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"urn:uuid:1ffb45bc-c212-e636-799f-fff7f6e5c6b4\",\n  \"nombre\": \"string\",\n  \"correo\": \"STlUJw5c4@ShlhFgZayNobaah.vo\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1980-09-18T03:39:24.368Z\",\n  \"modificado\": \"2024-11-28T12:51:48.766Z\",\n  \"ultimoLogin\": \"1976-04-03T10:32:57.260Z\",\n  \"token\": \"string\",\n  \"activo\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Method Not Allowed",
+							"code": 405,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"id\": \"urn:uuid:1ffb45bc-c212-e636-799f-fff7f6e5c6b4\",\n  \"nombre\": \"string\",\n  \"correo\": \"STlUJw5c4@ShlhFgZayNobaah.vo\",\n  \"password\": \"string\",\n  \"telefonos\": [\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    },\n    {\n      \"numero\": \"string\",\n      \"codigoCiudad\": \"string\",\n      \"codigoPais\": \"string\"\n    }\n  ],\n  \"creado\": \"1980-09-18T03:39:24.368Z\",\n  \"modificado\": \"2024-11-28T12:51:48.766Z\",\n  \"ultimoLogin\": \"1976-04-03T10:32:57.260Z\",\n  \"token\": \"string\",\n  \"activo\": false\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearerToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080/api"
+		},
+		{
+			"key": "userId",
+			"value": "12345678"
+		},
+		{
+			"key": "bearerToken",
+			"value": "{{vault:json-web-token}}"
+		}
+	]
+}
