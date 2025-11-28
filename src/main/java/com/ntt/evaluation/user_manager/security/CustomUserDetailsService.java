@@ -39,7 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // 2. Lanzar excepción si no se encuentra (necesario para Spring Security)
         if (!usuarioEncontrado.isPresent()) {
-            new UsernameNotFoundException("Usuario no encontrado con el nombre: " + username);
+            throw new UsernameNotFoundException("Usuario no encontrado con el nombre: " + username);
         }
         Usuario user = usuarioEncontrado.get();
 

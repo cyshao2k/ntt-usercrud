@@ -9,16 +9,19 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import com.ntt.evaluation.user_manager.security.JwtAuthenticationEntryPoint;
 import com.ntt.evaluation.user_manager.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter) {
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint) {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.jwtAuthenticationEntryPoint = jwtAuthenticationEntryPoint;
     }
 
     @Bean
@@ -47,6 +50,11 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             
+            .exceptionHandling(exceptions -> exceptions
+                // 🔑 PASO CRUCIAL: Asignar el entry point para manejo de errores de autenticación
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+            )
+
             // 4. Añadir nuestro filtro JWT antes del filtro estándar de Spring
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 

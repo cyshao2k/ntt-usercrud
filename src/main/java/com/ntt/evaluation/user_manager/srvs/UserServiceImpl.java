@@ -81,6 +81,10 @@ public class UserServiceImpl implements UserApiDelegate {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Correo no valido " + user.getCorreo());
         }
 
+        if (usuarioRepository.existsByEmail(user.getCorreo())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Correo ya existe");
+        }
+
         if (user.getPassword() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password no puede ser nula");
         }
@@ -244,6 +248,10 @@ public class UserServiceImpl implements UserApiDelegate {
         if (!matcher.matches()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Correo no valido " + user.getCorreo());
         }
+
+//        if (usuarioRepository.existsByEmail(user.getCorreo())) {
+//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Correo ya existe");
+//        }
 
         if (user.getPassword() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password no puede ser nula");
